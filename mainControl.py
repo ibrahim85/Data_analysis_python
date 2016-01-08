@@ -6,6 +6,7 @@ import SpeedDistance
 import GradientSample
 import GradientDistance
 import matplotlib.pyplot as plt
+import baseMetrics
 import display
 import matplotlib
 import numpy
@@ -41,8 +42,10 @@ for i in range(0, len(patients)):
         DataName = (data['playerName'][0][0][0])
         #print((DataName))
         DataX = (data['translationX'][0][:])#[0][:][:][0][:])
-        print((DataX[1][0][:]))
+
         DataY = (data['translationY'][0][:])
+
+        DataT = (data['translationTime'][0][:])
         #print(len(DataY))
 
         #display.tracingRoute(DataName, DataX, DataY, i, j)
@@ -53,6 +56,11 @@ for i in range(0, len(patients)):
         GradientSample.mainFunction(DataName, DataX, DataY)
 
         GradientDistance.mainFunction(DataName, DataX, DataY)
+
+
+        #print(baseMetrics.slidingSpeed(DataX[0][0][:], DataY[0][0][:], DataT[0][0][:], 5))
+
+
 
     plt.show()
 
