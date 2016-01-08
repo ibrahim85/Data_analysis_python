@@ -6,6 +6,7 @@ import SpeedDistance
 import GradientSample
 import GradientDistance
 import matplotlib.pyplot as plt
+import display
 import matplotlib
 import numpy
 
@@ -37,16 +38,17 @@ for i in range(0, len(patients)):
         #niceData = list(data['xmin'])
 
 
-        DataName = (data['playerName'][0][0])
+        DataName = (data['playerName'][0][0][0])
         #print((DataName))
-        DataX = (data['translationX'][0][0])
-        #print((DataX))
-        DataY = (data['translationY'][0][0])
-        #print((DataY))
+        DataX = (data['translationX'][0][:])#[0][:][:][0][:])
+        print((DataX[1][0][:]))
+        DataY = (data['translationY'][0][:])
+        #print(len(DataY))
 
+        #display.tracingRoute(DataName, DataX, DataY, i, j)
 
         SpeedSample.mainFunction(DataName, DataX, DataY)
-        SpeedDistance.mainFunction(DataName, DataX, DataY, j)
+        SpeedDistance.mainFunction(DataName, DataX, DataY, i)
 
         GradientSample.mainFunction(DataName, DataX, DataY)
 
