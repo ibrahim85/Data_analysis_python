@@ -10,4 +10,4 @@ def mainFunction(DataName, DataX, DataY, Step):
 
 
     #for i in range(0,1):
-    print("yesyes")
+    return [0] * 30

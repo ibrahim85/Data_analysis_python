@@ -1,4 +1,6 @@
 import matplotlib.pyplot as plt
+import numpy as np
+
 
 def tracingRoute(data_name, data_x, data_y, num_patient, num_folder):
 
@@ -15,8 +17,9 @@ def tracingRoute(data_name, data_x, data_y, num_patient, num_folder):
 
 def result(data_x, data_y, data_name):
 
-    if len(data_x) != len(data_y):
+    if np.size(data_x) != np.size(data_y):
         print('Error: Vectors X and Y to plot has to be the same length')
+        print(np.size(data_x), np.size(data_y))
 
     else:
         plt.figure()

@@ -6,13 +6,10 @@ import physics
 
 
 
-speed = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
-
-distance = [1, 1, 1, 3, 3, 8, 8, 10, 10, 10]
-
-refDistance = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+speed = [[10, 9, 8, 7, 6, 5, 4, 3, 2, 1], [1, 1, 1, 3, 3, 8, 8, 10, 10, 10], [1, 1, 1, 3, 3, 8, 8, 10, 10, 10]]
 
 
-sortedStuff = stat.distanceSorter(speed, refDistance, distance)
 
-print(physics.referenceSpaceCreator(10))
+
+
+print(numpy.average(speed,0))
