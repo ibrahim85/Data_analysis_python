@@ -46,6 +46,8 @@ for i in range(0, len(patients)):
         DataY = (data['translationY'][0][:])
 
         DataT = (data['translationTime'][0][:])
+
+        referenceSpace = referenceSpaceCreator('standard')
         #print(len(DataY))
 
         #display.tracingRoute(DataName, DataX, DataY, i, j)

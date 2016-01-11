@@ -19,7 +19,7 @@ def distributionSorter(data, grid):
     return distribution
 
 
-def distanceSorter(speedVector, referenceSpace, actualDistanceVector):
+def distanceSorter(speedVector,actualDistanceVector, referenceSpace):
 
     if len(speedVector) != len(actualDistanceVector):
         print('Error: speed vector and actual speed vector has to be the same length')
@@ -44,7 +44,6 @@ def distanceSorter(speedVector, referenceSpace, actualDistanceVector):
                     break
 
             distribution[j] += sortedSpeedVector[i]
-            print (distribution[j])
             normalizer[j] += 1
 
         for i in range(0, len(distribution)):

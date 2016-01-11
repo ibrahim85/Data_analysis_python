@@ -2,10 +2,11 @@ import baseMetrics
 import baseStatistics
 import display
 
-def mainFunction(DataName, DataX, DataY, DataT, DataDistance, Step, ReferenceSpace):
+
+def mainFunction(dataName, dataX, dataY, dataT, dataDistance, step, referenceSpace):
 
 
-    speedVector = baseMetrics.slidingSpeed(DataX,DataY, DataT, Step)
-    distribution = baseStatistics.distanceSorter(speedVector, ReferenceSpace, DataDistance)
-    display.result(ReferenceSpace, distribution)
+    speedVector = baseMetrics.slidingSpeed(dataX,dataY, dataT, step)
+    distribution = baseStatistics.distanceSorter(speedVector, dataDistance, referenceSpace)
+    display.result(referenceSpace, distribution)
 
