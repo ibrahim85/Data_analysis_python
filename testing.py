@@ -6,10 +6,15 @@ import physics
 
 
 
-speed = [[10, 9, 8, 7, 6, 5, 4, 3, 2, 1], [1, 1, 1, 3, 3, 8, 8, 10, 10, 10], [1, 1, 1, 3, 3, 8, 8, 10, 10, 10]]
+speed = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+
+lala = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 
+u = []
+u.append(speed)
+
+u.append(lala)
 
 
-
-print(numpy.average(speed,0))
+print(u)

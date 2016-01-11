@@ -23,10 +23,10 @@ for i in range(0, len(patients)):
     speedResolution = 30
     gradientResolution = 30
 
-    patientSpeedSample = [0] * speedResolution
-    patientSpeedDistance = [0] * spaceResolution
-    patientGradientSample = [0] * gradientResolution
-    patientGradientDistance = [0] * spaceResolution
+    patientSpeedSample = [] #[0] * speedResolution
+    patientSpeedDistance = [] #[0] * spaceResolution
+    patientGradientSample = [] #[0] * gradientResolution
+    patientGradientDistance = [] #[0] * spaceResolution
 
     for j in range(1, sessions_nums[0][i]+1):
         patient_address =base_address + patients[i] + '\A' + str(math.floor(j / 10)) + str(j % 10)
@@ -46,18 +46,27 @@ for i in range(0, len(patients)):
 
         referenceSpace = physics.referenceSpaceCreator(spaceResolution)
 
-        patientSpeedSample = [sum(x) for x in zip(patientSpeedSample, SpeedSample.mainFunction(DataName, DataX, DataY, DataT))]
-        patientSpeedDistance = [sum(x) for x in zip(patientSpeedDistance, SpeedDistance.mainFunction(DataName, DataX, DataY, DataT, DataD, 1, referenceSpace))] #(data_name, data_x, data_y, data_t, data_distance, step, reference_space):
-        patientGradientSample = [sum(x) for x in zip(patientGradientSample, GradientSample.mainFunction(DataName, DataX, DataY))]
-        patientGradientDistance = [sum(x) for x in zip(patientGradientDistance, GradientDistance.mainFunction(DataName, DataX, DataY))]
+        patientSpeedSample.append(SpeedSample.mainFunction(DataName, DataX, DataY, DataT))
+        #patientSpeedSample = [sum(x) for x in zip(patientSpeedSample, SpeedSample.mainFunction(DataName, DataX, DataY, DataT))]
+        patientSpeedDistance.append(SpeedDistance.mainFunction(DataName, DataX, DataY, DataT, DataD, 1, referenceSpace))
+        #patientSpeedDistance = [sum(x) for x in zip(patientSpeedDistance, SpeedDistance.mainFunction(DataName, DataX, DataY, DataT, DataD, 1, referenceSpace))] #(data_name, data_x, data_y, data_t, data_distance, step, reference_space):
+        patientGradientSample.append(GradientSample.mainFunction(DataName, DataX, DataY))
+        #patientGradientSample = [sum(x) for x in zip(patientGradientSample, GradientSample.mainFunction(DataName, DataX, DataY))]
+        patientGradientDistance.append(GradientDistance.mainFunction(DataName, DataX, DataY))
+        #patientGradientDistance = [sum(x) for x in zip(patientGradientDistance, GradientDistance.mainFunction(DataName, DataX, DataY))]
 
-    patientSpeedSample = [x / sessions_nums[0][i] for x in patientSpeedSample]
-    patientSpeedDistance = [x / sessions_nums[0][i] for x in patientSpeedDistance]
-    patientGradientSample = [x / sessions_nums[0][i] for x in patientGradientSample]
-    patientGradientDistance = [x / sessions_nums[0][i] for x in patientGradientDistance]
+    #patientSpeedSample = [x / sessions_nums[0][i] for x in patientSpeedSample]
+    #patientSpeedDistance = [x / sessions_nums[0][i] for x in patientSpeedDistance]
+    #patientGradientSample = [x / sessions_nums[0][i] for x in patientGradientSample]
+    #patientGradientDistance = [x / sessions_nums[0][i] for x in patientGradientDistance]
 
-    display.result(referenceSpace, patientSpeedDistance, DataName)
+    mean = numpy.average(patientSpeedDistance, axis=0)
+    jj=numpy.std(patientSpeedDistance, axis=0)
+    stdError = [x / math.sqrt(sessions_nums[0][i]) for x in numpy.std(patientSpeedDistance, axis=0)]
+
+    display.result(referenceSpace, mean, stdError, DataName)
     plt.draw()
+
 
 plt.show()
 

@@ -15,7 +15,7 @@ def tracingRoute(data_name, data_x, data_y, num_patient, num_folder):
 
 
 
-def result(data_x, data_y, data_name):
+def result(data_x, data_y, data_error, data_name):
 
     if np.size(data_x) != np.size(data_y):
         print('Error: Vectors X and Y to plot has to be the same length')
@@ -25,4 +25,4 @@ def result(data_x, data_y, data_name):
         plt.figure()
         plt.plot(data_x, data_y)
         plt.title(data_name)
-
+        plt.errorbar(data_x, data_y, yerr=data_error, fmt='o')
