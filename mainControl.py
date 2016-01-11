@@ -50,7 +50,7 @@ for i in range(0, len(patients)):
 
         #display.tracingRoute(DataName, DataX, DataY, i, j)
 
-        SpeedSample.mainFunction(DataName, DataX, DataY)
+        SpeedSample.mainFunction(DataName, DataX, DataY, DataT, 1)
         SpeedDistance.mainFunction(DataName, DataX, DataY, i)
 
         GradientSample.mainFunction(DataName, DataX, DataY)

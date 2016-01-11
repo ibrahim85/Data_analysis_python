@@ -28,10 +28,6 @@ def slidingSpeed(x, y, t, step):
 
 
 
-
-
-
-
 def gradient():
 
     print('whatever2')
