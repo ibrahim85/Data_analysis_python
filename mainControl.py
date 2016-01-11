@@ -6,6 +6,7 @@ import SpeedDistance
 import GradientSample
 import GradientDistance
 import matplotlib.pyplot as plt
+import physics
 import baseMetrics
 import display
 import matplotlib
@@ -47,13 +48,16 @@ for i in range(0, len(patients)):
 
         DataT = (data['translationTime'][0][:])
 
-        referenceSpace = referenceSpaceCreator('standard')
+        DataD = (data['translationDistance'][0][:])
+
+        referenceSpace = physics.referenceSpaceCreator(resolution=30)
         #print(len(DataY))
 
         #display.tracingRoute(DataName, DataX, DataY, i, j)
 
-        SpeedSample.mainFunction(DataName, DataX, DataY, DataT, 1)
-        SpeedDistance.mainFunction(DataName, DataX, DataY, i)
+        SpeedSample.mainFunction(DataName, DataX, DataY, DataT)
+        SpeedDistance.mainFunction(DataName, DataX, DataY, DataT, DataD, 1, referenceSpace) #(data_name, data_x, data_y, data_t, data_distance, step, reference_space):
+
 
         GradientSample.mainFunction(DataName, DataX, DataY)
 

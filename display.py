@@ -1,25 +1,25 @@
 import matplotlib.pyplot as plt
 
-def tracingRoute(DataName, DataX, DataY, numPatient, numFolder):
+def tracingRoute(data_name, data_x, data_y, num_patient, num_folder):
 
-    for i in range(0, len(DataX)):
+    for i in range(0, len(data_x)):
         #plt.subplot(131)
-        plt.figure(numFolder*10 + i)
+        plt.figure(num_folder*10 + i)
         #plt.plot([1,2,3,4], [1,4,9,16])
         #print(DataX[0])
         #print(DataY[0])
-        plt.plot(DataX[i][0][:], DataY[i][0][:])
-        plt.title(DataName)
+        plt.plot(data_x[i][0][:], data_y[i][0][:])
+        plt.title(data_name)
 
 
 
-def result(DataX, DataY, figNum):
+def result(data_x, data_y, data_name):
 
-    if len(DataX) != len(DataY):
+    if len(data_x) != len(data_y):
         print('Error: Vectors X and Y to plot has to be the same length')
 
     else:
-        plt.figure(figNum)
-        plt.plot(DataX, DataY)
-
+        plt.figure()
+        plt.plot(data_x, data_y)
+        plt.title(data_name)
 

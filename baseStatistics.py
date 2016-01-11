@@ -21,8 +21,12 @@ def distributionSorter(data, grid):
 
 def distanceSorter(speedVector,actualDistanceVector, referenceSpace):
 
+    actualDistanceVector = actualDistanceVector[0:(len(speedVector))] #this is necessary because the speed vector is a bit shorter dure to the sliding calculations and depends on the size of the sliding window
+
+
     if len(speedVector) != len(actualDistanceVector):
-        print('Error: speed vector and actual speed vector has to be the same length')
+        print('Error: speed vector and actual distance vector has to be the same length | baseStatistics.py - distanceSorter')
+        print(len(speedVector), len(actualDistanceVector))
 
     else:
         distribution = [0] * len(referenceSpace)

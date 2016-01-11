@@ -11,12 +11,11 @@ def referenceSpaceCreator(resolution):
     global screenSizeX
     global screenSizeY
 
-    minDistance=0;
+    minDistance=0
     maxDistance = math.sqrt((2*screenSizeX)**2 + (2*screenSizeY)**2)
 
-    interval = (maxDistance - minDistance) / (resolution);
+    interval = (maxDistance - minDistance) / resolution;
 
-   # space = [i for i in range(minDistance, maxDistance, interval)]
     space = numpy.arange(minDistance, maxDistance, interval)
-    print(maxDistance)
+
     return space

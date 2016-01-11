@@ -21,7 +21,11 @@ def slidingSpeed(x, y, t, step):
 
             dx = x[i+step] - x[i]
             dy = y[i+step] - y[i]
-            dt = t[i+step] - t[i]
+            if t[i+step] - t[i] != 0:
+                dt = t[i+step] - t[i]
+            else:
+                print('Warning: there was a timestep calculation that gave value 0. Previous timestep has been used '
+                      'instead.')
             speed_vector.append(math.sqrt(math.pow(dx, 2) + math.pow(dy, 2)) / dt)
             i += step
         return speed_vector
