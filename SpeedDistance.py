@@ -1,15 +1,17 @@
 import baseMetrics
 import baseStatistics
+import physics
 
 
-def mainFunction(data_name, data_x, data_y, data_t, data_distance, step, reference_space):
+def mainFunction(patient_data, step, resolution):
 
-    totalDistribution = [0] * len(reference_space)
+    totalDistribution = [0] * resolution
+    referenceSpace = physics.referenceSpaceCreator(resolution)
 
-    for i in range(len(data_x)):
+    for i in range(len(patient_data.X)):
 
-        speedVector = baseMetrics.slidingSpeed(data_x[i][0].tolist(),data_y[i][0].tolist(), data_t[i][0].tolist(), step)
-        totalDistribution = [sum(x) for x in zip(totalDistribution, baseStatistics.distanceSorter(speedVector, data_distance[i][0].tolist(), reference_space))]
+        speedVector = baseMetrics.slidingSpeed(patient_data.X[i][0].tolist(), patient_data.Y[i][0].tolist(), patient_data.T[i][0].tolist(), step)
+        totalDistribution = [sum(x) for x in zip(totalDistribution, baseStatistics.distanceSorter(speedVector, patient_data.D[i][0].tolist(), referenceSpace))]
 
-    avgDistribution = [i / len(data_x) for i in totalDistribution]
+    avgDistribution = [i / len(patient_data.X) for i in totalDistribution]
     return avgDistribution

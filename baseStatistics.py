@@ -11,6 +11,7 @@ def mean(data, direction):
 
     return numpy.average(data, axis=given_axis)
 
+
 def std(data, direction): #std stands for standard error
 
     if direction == 'vertical':

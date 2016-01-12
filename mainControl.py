@@ -5,12 +5,10 @@ import SpeedDistance
 import GradientSample
 import GradientDistance
 import matplotlib.pyplot as plt
-import physics
 import display
-import numpy
 import readin
 import baseStatistics
-
+from physics import Resolutions, ReferenceGrid
 
 patients = ['BEAR', 'BOB2843', 'kacmbj24',  'KathrynPaige', 'MIMI7', 'MONTREAL',  'MSQUILTER',  'Pecoho',  'Stone', 'LUCY', 'STARBOSTON', 'shadow227', 'OffKeySymphony', 'FlyingDutchie', 'whisperjet42', 'Fred']
 sessions_nums = [[16, 7, 16, 20, 14, 7, 2, 8, 13, 15, 11, 7, 12, 2, 4, 10], [15, 8, 17, 20, 15, 7, 3, 9, 15, 15, 11, 8, 13, 0, 4, 11], [16, 7, 17, 19, 15, 7, 3, 10, 15, 14, 11, 8, 11, 1, 6, 12]];
@@ -18,9 +16,9 @@ base_address = "D:\PreData Analzsis\Hearing Aid\Training Data\Group B\\"
 
 for i in range(0, len(patients)):
 
-    spaceResolution = 30
-    speedResolution = 30
-    gradientResolution = 30
+    resolution = Resolutions(30, 30, 30)
+    referenceSpaces = ReferenceGrid(resolution)
+
 
     patientSpeedSample = [] #[0] * speedResolution
     patientSpeedDistance = [] #[0] * spaceResolution
@@ -33,14 +31,15 @@ for i in range(0, len(patients)):
 
         Patient = readin.patientData(patients, i, j)
 
-        referenceSpace = physics.referenceSpaceCreator(spaceResolution)
 
-        #patientSpeedSample.append(SpeedSample.mainFunction(Patient.name, Patient.X, Patient.Y, Patient.T))
-        patientSpeedDistance.append(SpeedDistance.mainFunction(Patient.name, Patient.X, Patient.Y, Patient.T, Patient.D, 1, referenceSpace))
+
+        patientSpeedSample.append(SpeedSample.mainFunction(Patient, 1, resolution.speedResolution))
+        patientSpeedDistance.append(SpeedDistance.mainFunction(Patient, 1,resolution.spaceResolution))
         #patientGradientSample.append(GradientSample.mainFunction(Patient.name, Patient.X, Patient.Y, Patient.T))
         #patientGradientDistance.append(GradientDistance.mainFunction(Patient.name, Patient.X, Patient.Y, Patient.T))
 
-    display.result(referenceSpace, baseStatistics.mean(patientSpeedDistance, 'vertical'),baseStatistics.std(patientSpeedDistance, 'vertical'), Patient.name)
+    display.result(referenceSpaces.space, baseStatistics.mean(patientSpeedDistance, 'vertical'),baseStatistics.std(patientSpeedDistance, 'vertical'), Patient.name)
+    display.result(referenceSpaces.speed, baseStatistics.mean(patientSpeedSample, 'vertical'), baseStatistics.std(patientSpeedSample, 'vertical'), Patient.name)
     plt.draw()
 
 
