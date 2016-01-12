@@ -2,11 +2,11 @@ import baseMetrics
 import baseStatistics
 import physics
 
-def mainFunction(patient_data, step, resolution):
+def mainFunction(patient_data, step, grid):
 
 
-    totalDistribution = [0] * resolution
-    grid = physics.speedGridCreator(resolution)
+    totalDistribution = [0] * len(grid) # resolution
+    #grid = physics.speedGridCreator(resolution)
 
 
     for i in range(len(patient_data.X)):

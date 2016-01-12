@@ -24,7 +24,7 @@ class ReferenceGrid(object):
     maxDistance = math.sqrt((2*screenSizeX)**2 + (2*screenSizeY)**2)
 
     minSpeed = 0
-    maxSpeed = 10
+    maxSpeed = 4
 
     def __init__(self, resolution):
         interval = (self.maxDistance - self.minDistance) / resolution.spaceResolution

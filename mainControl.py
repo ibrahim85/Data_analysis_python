@@ -33,13 +33,13 @@ for i in range(0, len(patients)):
 
 
 
-        patientSpeedSample.append(SpeedSample.mainFunction(Patient, 1, resolution.speedResolution))
-        patientSpeedDistance.append(SpeedDistance.mainFunction(Patient, 1,resolution.spaceResolution))
+        patientSpeedSample.append(SpeedSample.mainFunction(Patient, 1, referenceSpaces.speed))
+        patientSpeedDistance.append(SpeedDistance.mainFunction(Patient, 1, referenceSpaces.space))
         #patientGradientSample.append(GradientSample.mainFunction(Patient.name, Patient.X, Patient.Y, Patient.T))
         #patientGradientDistance.append(GradientDistance.mainFunction(Patient.name, Patient.X, Patient.Y, Patient.T))
 
-    display.result(referenceSpaces.space, baseStatistics.mean(patientSpeedDistance, 'vertical'),baseStatistics.std(patientSpeedDistance, 'vertical'), Patient.name)
-    display.result(referenceSpaces.speed, baseStatistics.mean(patientSpeedSample, 'vertical'), baseStatistics.std(patientSpeedSample, 'vertical'), Patient.name)
+    display.result(referenceSpaces.space, baseStatistics.mean(patientSpeedDistance, 'vertical'), baseStatistics.std(patientSpeedDistance, 'vertical'), Patient.name + ' Speed = F(distance)' )
+    display.result(referenceSpaces.speed, baseStatistics.mean(patientSpeedSample, 'vertical'), baseStatistics.std(patientSpeedSample, 'vertical'), Patient.name + ' # = F(speed)' )
     plt.draw()
 
 
