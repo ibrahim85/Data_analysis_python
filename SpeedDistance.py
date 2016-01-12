@@ -1,6 +1,6 @@
 import baseMetrics
 import baseStatistics
-import physics
+from physics import screen_to_cm_ratio
 
 
 def mainFunction(patient_data, step, grid, metric_scaling):
@@ -14,7 +14,7 @@ def mainFunction(patient_data, step, grid, metric_scaling):
         totalDistribution = [sum(x) for x in zip(totalDistribution, baseStatistics.distanceSorter(speedVector, patient_data.D[i][0].tolist(),grid))]
 
     if metric_scaling:
-        avgDistribution = [i / (len(patient_data.X) * 0.151517520516) for i in totalDistribution]
+        avgDistribution = [i / (len(patient_data.X) * screen_to_cm_ratio) for i in totalDistribution]
     else:
         avgDistribution = [i / len(patient_data.X) for i in totalDistribution]
 

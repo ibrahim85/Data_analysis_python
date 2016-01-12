@@ -4,7 +4,7 @@ import numpy
 
 screenSizeX = 1.778 #relative sizes of the screen of the tablet. The distances are given as a reference to these units of measurements
 screenSizeY = 1
-#0.151517520516 is equivavelnt to 1 cm in reality
+screen_to_cm_ratio = 0.1515175 # is equivavelnt to 1 cm in reality
 
 class Resolutions(object):
 
