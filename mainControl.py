@@ -34,7 +34,7 @@ for i in range(0, len(patients)):
 
 
         patientSpeedSample.append(SpeedSample.mainFunction(Patient, 1, referenceSpaces.speed))
-        patientSpeedDistance.append(SpeedDistance.mainFunction(Patient, 1, referenceSpaces.space))
+        patientSpeedDistance.append(SpeedDistance.mainFunction(Patient, 1, referenceSpaces.space, 1))
         #patientGradientSample.append(GradientSample.mainFunction(Patient.name, Patient.X, Patient.Y, Patient.T))
         #patientGradientDistance.append(GradientDistance.mainFunction(Patient.name, Patient.X, Patient.Y, Patient.T))
 

@@ -26,3 +26,5 @@ def result(data_x, data_y, data_error, data_name):
         plt.plot(data_x, data_y)
         plt.title(data_name)
         plt.errorbar(data_x, data_y, yerr=data_error, fmt='o')
+
+
