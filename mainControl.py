@@ -9,6 +9,8 @@ import physics
 import display
 import numpy
 import readin
+import baseStatistics
+
 
 patients = ['BEAR', 'BOB2843', 'kacmbj24',  'KathrynPaige', 'MIMI7', 'MONTREAL',  'MSQUILTER',  'Pecoho',  'Stone', 'LUCY', 'STARBOSTON', 'shadow227', 'OffKeySymphony', 'FlyingDutchie', 'whisperjet42', 'Fred']
 sessions_nums = [[16, 7, 16, 20, 14, 7, 2, 8, 13, 15, 11, 7, 12, 2, 4, 10], [15, 8, 17, 20, 15, 7, 3, 9, 15, 15, 11, 8, 13, 0, 4, 11], [16, 7, 17, 19, 15, 7, 3, 10, 15, 14, 11, 8, 11, 1, 6, 12]];
@@ -38,17 +40,7 @@ for i in range(0, len(patients)):
         #patientGradientSample.append(GradientSample.mainFunction(Patient.name, Patient.X, Patient.Y, Patient.T))
         #patientGradientDistance.append(GradientDistance.mainFunction(Patient.name, Patient.X, Patient.Y, Patient.T))
 
-
-    #patientSpeedSample = [x / sessions_nums[0][i] for x in patientSpeedSample]
-    #patientSpeedDistance = [x / sessions_nums[0][i] for x in patientSpeedDistance]
-    #patientGradientSample = [x / sessions_nums[0][i] for x in patientGradientSample]
-    #patientGradientDistance = [x / sessions_nums[0][i] for x in patientGradientDistance]
-
-    mean = numpy.average(patientSpeedDistance, axis=0)
-    jj=numpy.std(patientSpeedDistance, axis=0)
-    stdError = [x / math.sqrt(sessions_nums[0][i]) for x in numpy.std(patientSpeedDistance, axis=0)]
-
-    display.result(referenceSpace, mean, stdError, Patient.name)
+    display.result(referenceSpace, baseStatistics.mean(patientSpeedDistance, 'vertical'),baseStatistics.std(patientSpeedDistance, 'vertical'), Patient.name)
     plt.draw()
 
 

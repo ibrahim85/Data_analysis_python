@@ -1,4 +1,25 @@
 import numpy
+import math
+
+
+def mean(data, direction):
+
+    if direction == 'vertical':
+        given_axis = 0
+    else:
+        given_axis = 1
+
+    return numpy.average(data, axis=given_axis)
+
+def std(data, direction): #std stands for standard error
+
+    if direction == 'vertical':
+        given_axis = 0
+    else:
+        given_axis = 1
+
+    return [x / math.sqrt(len(data[:][0])) for x in numpy.std(data, axis=0)] #math.sqrt(sessions_nums[0][i])
+
 
 def distributionSorter(data, grid):
 
