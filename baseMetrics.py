@@ -41,12 +41,20 @@ def slidingGradient(x, y, goal_x, goal_y, step):
 
         idealvector_x = goal_x - x[i]
         idealvector_y = goal_y - y[i]
+        length = math.sqrt(idealvector_x**2 + idealvector_y**2)
+        if length != 0:
+            idealvector_x /= length
+            idealvector_y /= length
 
         actual_x = x[i + step] - x[i]
         actual_y = y[i + step] - y[i]
+        length = math.sqrt(actual_x**2 + actual_y**2)
+        if length != 0:
+            actual_x /= length
+            actual_y /= length
 
+        gradient.append(-math.atan2(idealvector_y, idealvector_x) + math.atan2(actual_y, actual_x))
 
-        gradient.append(math.atan2(actual_y, actual_x) - math.atan2(idealvector_y, idealvector_x))
         i += 1
 
     return gradient
