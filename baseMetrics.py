@@ -32,11 +32,21 @@ def slidingSpeed(x, y, t, step):
 
 
 
-def gradient():
+def slidingGradient(x, y, goal_x, goal_y, step):
 
-    print('whatever2')
+    gradient = []
+    i = 0
+
+    while (i + step) < len(x):
+
+        idealvector_x = goal_x - x[i]
+        idealvector_y = goal_y - y[i]
+
+        actual_x = x[i + step] - x[i]
+        actual_y = y[i + step] - y[i]
 
 
-def slidingGradient():
+        gradient.append(math.atan2(actual_y, actual_x) - math.atan2(idealvector_y, idealvector_x))
+        i += 1
 
-    print('whatever2')
+    return gradient

@@ -34,6 +34,13 @@ class ReferenceGrid(object):
         self.speed = numpy.arange(self.minSpeed, self.maxSpeed, interval)
 
 
+def scale(grid, ratio):
+    for i in range(len(grid)):
+        grid[i] *= ratio
+
+    return grid
+
+
 def referenceSpaceCreator(resolution):
 
     global screenSizeX
@@ -51,7 +58,7 @@ def referenceSpaceCreator(resolution):
 
 def speedGridCreator(resolution):
 
-    minSpeed=0
+    minSpeed = 0
     maxSpeed = 10
 
     interval = (maxSpeed - minSpeed) / resolution
