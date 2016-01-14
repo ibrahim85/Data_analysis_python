@@ -36,21 +36,22 @@ for i in range(0, len(patients)):
 
         Patient = readin.patientData(patients, i, j)
 
+        for x in range(len(Patient.Events[1][0])):
+            print(Patient.Events[1][0][x][0][0][0])
 
-
-        patientSpeedSample.append(SpeedSample.mainFunction(Patient, 1, referenceSpaces.speed))
-        patientSpeedDistance.append(SpeedDistance.mainFunction(Patient, 1, referenceSpaces.space, 1))
+        #patientSpeedSample.append(SpeedSample.mainFunction(Patient, 1, referenceSpaces.speed))
+        #patientSpeedDistance.append(SpeedDistance.mainFunction(Patient, 1, referenceSpaces.space, 1))
         #patientGradientSample.append(GradientSample.mainFunction(Patient.name, Patient.X, Patient.Y, Patient.T))
-        patientGradientDistance.append(GradientDistance.mainFunction(Patient, 1, referenceSpaces.space)) #(patient_data, step, grid)
+        #patientGradientDistance.append(GradientDistance.mainFunction(Patient, 1, referenceSpaces.space)) #(patient_data, step, grid)
 
-    display.result(referenceSpaces.space, baseStatistics.mean(patientSpeedDistance, 'vertical'), baseStatistics.std(patientSpeedDistance, 'vertical'), Patient.name + ' Speed = F(distance)' )
-    display.result(physics.scale(referenceSpaces.speed, (1 / screen_to_cm_ratio)), baseStatistics.mean(patientSpeedSample, 'vertical'), baseStatistics.std(patientSpeedSample, 'vertical'), Patient.name + ' # = F(speed)' )
-    display.result(referenceSpaces.space, baseStatistics.mean(patientGradientDistance, 'vertical'), baseStatistics.std(patientGradientDistance, 'vertical'), Patient.name + 'Gradient = F(distance)')
+   # display.result(referenceSpaces.space, baseStatistics.mean(patientSpeedDistance, 'vertical'), baseStatistics.std(patientSpeedDistance, 'vertical'), Patient.name + ' Speed = F(distance)' )
+    #display.result(physics.scale(referenceSpaces.speed, (1 / screen_to_cm_ratio)), baseStatistics.mean(patientSpeedSample, 'vertical'), baseStatistics.std(patientSpeedSample, 'vertical'), Patient.name + ' # = F(speed)' )
+   # display.result(referenceSpaces.space, baseStatistics.mean(patientGradientDistance, 'vertical'), baseStatistics.std(patientGradientDistance, 'vertical'), Patient.name + 'Gradient = F(distance)')
 
-    plt.draw()
+   # plt.draw()
 
 
-plt.show()
+#plt.show()
 
 
 
