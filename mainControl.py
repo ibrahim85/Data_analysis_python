@@ -43,18 +43,31 @@ for i in range(0, len(patients)):
 
             time_map = {0: 'Early-training', 1: 'Mid-training', 2: 'Late-training'}
 
+            #readin.segmenter(Patient.X, Patient.Y, Patient.T, Patient.Events)
+
             #patientSpeedSample.append(SpeedSample.mainFunction(Patient, 1, referenceSpaces.speed))
-            patientSpeedDistance[time].append(SpeedDistance.mainFunction(Patient, 1, referenceSpaces.space, 1))
+            #patientSpeedDistance[time].append(SpeedDistance.mainFunction(Patient, 1, referenceSpaces.space, 1))
             #patientGradientSample.append(GradientSample.mainFunction(Patient.name, Patient.X, Patient.Y, Patient.T))
             #patientGradientDistance.append(GradientDistance.mainFunction(Patient, 1, referenceSpaces.space)) #(patient_data, step, grid)
 
         #appending plots as returning values is only necessary for the LEGEND. If it comes out to be timeconsuming should be ommitted and resolved.
-        plots.append(display.result(referenceSpaces.space, baseStatistics.mean(patientSpeedDistance[time], 'vertical'), baseStatistics.std(patientSpeedDistance[time], 'vertical'), i,  Patient.name + ' Speed = F(distance)', 1, timing=time_map[time]))
+        #plots.append(display.result(referenceSpaces.space, baseStatistics.mean(patientSpeedDistance[time], 'vertical'), baseStatistics.std(patientSpeedDistance[time], 'vertical'), i,  Patient.name + ' Speed = F(distance)', 1, timing=time_map[time]))
         #display.result(physics.scale(referenceSpaces.speed, (1 / screen_to_cm_ratio)), baseStatistics.mean(patientSpeedSample, 'vertical'), baseStatistics.std(patientSpeedSample, 'vertical'), i,  Patient.name + ' # = F(speed)', 0)
         #display.result(referenceSpaces.space, baseStatistics.mean(patientGradientDistance, 'vertical'), baseStatistics.std(patientGradientDistance, 'vertical'), i, Patient.name + 'Gradient = F(distance)', 3)
+    #print(Patient.name)
+    #print(len(Patient.Y))
 
-        plt.draw()
-    plt.legend(handles=plots)
+    #for i in range(len(Patient.Y)):
+    #    print(Patient.Y[i])
+
+    plt.figure()
+    #print(Patient.X)
+    #for k in range(len(Patient.X)):
+    plt.figure()
+    plt.plot(Patient.X[0][0][:].tolist(), label='x')
+    plt.plot(Patient.Y[0][0][:].tolist(), label='y')
+    print(len(Patient.X[0][0][:].tolist()))
+    plt.draw()
 plt.show()
 
 
