@@ -21,7 +21,7 @@ def result(data_x, data_y, data_error, patient_num,  data_name, data_type, timin
 
 
     if np.size(data_x) != np.size(data_y):
-        print('Error: Vectors X and Y to plot has to be the same length')
+        print('Error (/display.py/results): Vectors X and Y to plot has to be the same length:')
         print(np.size(data_x), np.size(data_y))
 
     else:

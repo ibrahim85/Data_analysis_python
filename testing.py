@@ -43,7 +43,12 @@ plt.show()
 """
 
 
-a = [1,2,3,4,5, 6, 7, 8, 9, 11, 100]
-keresendo = 55.6
+a = [1,2,3,4,5, 6, 7, 8, 9, 11, 100, 555, 777, 888, 999]
+keresendo = 555.6
 pair = min(enumerate(abs(numpy.subtract(a,[keresendo]*len(a)))), key=itemgetter(1))
-print(pair[0], a[pair[0]])
+a=[]
+a=a+[5]
+a.append(4)
+print(a)
+
+
