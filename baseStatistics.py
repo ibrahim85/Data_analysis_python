@@ -19,7 +19,10 @@ def std(data, direction): #std stands for standard error
     else:
         given_axis = 1
 
-    return [x / math.sqrt(len(data[:][0])) for x in numpy.std(data, axis=0)] #math.sqrt(sessions_nums[0][i])
+    if (numpy.std(data, axis=0)).itemsize > 1 & (numpy.std(data, axis=0)).itemsize  != 0:
+        return [x / math.sqrt(len(data[:][0])) for x in numpy.std(data, axis=0).tolist()] #math.sqrt(sessions_nums[0][i])
+    else:
+        return 0
 
 
 def distributionSorter(data, grid):
